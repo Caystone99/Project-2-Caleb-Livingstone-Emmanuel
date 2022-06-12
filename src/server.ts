@@ -1,5 +1,5 @@
 import express, {Request, Response} from 'express';
-import path from 'path'
+import cors from 'cors'
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
@@ -14,7 +14,9 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
 
-  app.use(express.static(path.join(__dirname, './views')))
+  app.use(cors());
+
+  //app.use(express.static(path.join(__dirname, './views')))
 
   // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
   // GET /filteredimage?image_url={{URL}}
@@ -40,17 +42,17 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   } );
 
   app.get("/filteredimage/", async(req:Request, res:Response)=>{
-    const { image_url } = req.query;
+    const { image_url }:any = req.query;
 
     if(!image_url) {
-      return res.status(400)
+      return res.status(422)
                 .send('Image URL is required');
     }
 
     filterImageFromURL(image_url)
       .then(result=>{
         res.sendFile(result, {}, ()=>{deleteLocalFiles([result])})
-      }).catch((err)=>res.status(400).send('A valid Image URL is required'))
+      }).catch((err)=>res.status(422).send(`${err} : A valid Image URL is required`))
   })
   
   

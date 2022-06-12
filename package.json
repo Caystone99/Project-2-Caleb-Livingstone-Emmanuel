@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf www/ || true",
     "tsc": "tsc",
-    "build": "npm run clean && tsc && cp package.json www/package.json && mkdir www/tmp/ && cd www && 7z a Archive.zip . && cd ..",
+    "build": "npm run clean && tsc && cp package.json www/package.json && mkdir www\\views\\ && cp -r ./src/views/index.html www/views && mkdir www\\tmp\\ && cd www && 7z a Archive.zip . && cd ..",
     "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
   },
   "repository": {
@@ -22,16 +22,20 @@
   "homepage": "https://github.com/grutt/udacity-c2-image-filter#readme",
   "devDependencies": {
     "@types/bluebird": "^3.5.33",
-    "@types/express": "^4.17.0",
-    "@types/node": "^11.13.17",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^11.15.54",
     "ts-node-dev": "^1.1.8",
-    "tslint": "^5.18.0",
-    "typescript": "^3.5.3"
+    "tslint": "^5.20.1",
+    "typescript": "^3.9.10"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
     "jimp": "^0.16.1",
     "lodash": "^4.17.15",
+    "npm-install-peers": "^1.2.2",
     "rimraf": "^3.0.2"
   }
 }

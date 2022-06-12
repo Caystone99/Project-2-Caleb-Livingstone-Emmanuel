@@ -1,5 +1,6 @@
 import fs from "fs";
 import Jimp = require("jimp");
+import axios from 'axios'
 
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
@@ -8,13 +9,16 @@ import Jimp = require("jimp");
 //    inputURL: string - a publicly accessible url to an image file
 // RETURNS
 //    an absolute path to a filtered image locally saved file
+
 export async function filterImageFromURL(inputURL: string): Promise<string> {
   return new Promise(async (resolve, reject) => {
     try {
-      const photo = await Jimp.read(inputURL);
+
+      const res = await axios.get(inputURL, {responseType: 'arraybuffer'})
+      const photo =  await Jimp.read(res.data);
       const outpath =
         "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
-      await photo
+      photo
         .resize(256, 256) // resize
         .quality(60) // set JPEG quality
         .greyscale() // set greyscale
@@ -26,6 +30,7 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
     }
   });
 }
+
 
 // deleteLocalFiles
 // helper function to delete files on the local disk
