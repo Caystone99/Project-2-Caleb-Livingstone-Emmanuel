@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Filter by Caleb-Livingstone</title>
+</head>
+<body>
+    
+    <form method="GET" action="/filteredImage/">
+        <h2>Image Filter by <a href='https://github.com/Caystone99' target="_blank">Emmanuel .c Caleb-Livingstone</a></h2>
+        
+        <fieldset>
+            <input type="text" placeholder="Enter Image URL" name="image_url"/>
+            <button type='submit'>Filter Image</button>
+        </fieldset>
+    </form>
+</body>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); 
+    *{
+        padding:0;
+        margin:0;
+        font-family: 'Poppins', sans-serif;
+    }
+    a{
+        text-decoration: none;
+        color:rgb(22, 98, 165)
+    }
+    h2{
+        padding:10px;
+        margin-bottom:20px;
+        text-align:center;
+    }
+    form{
+        position:absolute;
+        transform: translate(-50%, -50%);
+        left:50%;
+        top:50%;
+        width:600px;
+    }
+    form fieldset{
+        border:none;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    form input{
+        width:400px;
+        outline:none;
+        padding:10px;
+        margin:5px;
+        font-size:15px;
+        border:none;
+        border-bottom:1px solid #121212;
+    }
+    form button{
+        border:none;
+        background-color: #121212;
+        color:#fff;
+        padding:10px;
+        cursor:pointer;
+    }
+
+
+</style>
+</html>
